@@ -24,10 +24,19 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ValueAnimator animation = ValueAnimator.ofFloat(0f, 100f);
+                ValueAnimator animation = ValueAnimator.ofFloat(0f, 300f);
                 animation.setDuration(1000);
                 animation.start();
-                textView.setText(animation.getAnimatedValue().toString());
+                animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator updatedAnimation) {
+                        // You can use the animated value in a property that uses the
+                        // same type as the animation. In this case, you can use the
+                        // float value in the translationX property.
+                        float animatedValue = (float)updatedAnimation.getAnimatedValue();
+                        textView.setTranslationX(animatedValue);
+                    }
+                });
             }
         });
     }
