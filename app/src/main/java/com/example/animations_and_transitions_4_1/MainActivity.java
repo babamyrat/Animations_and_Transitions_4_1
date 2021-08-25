@@ -2,6 +2,7 @@ package com.example.animations_and_transitions_4_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ValueAnimator animation = ValueAnimator.ofFloat(0f, 300f);
+                ObjectAnimator animation = ObjectAnimator.ofFloat(textView, "translationX", 100f);
                 animation.setDuration(1000);
                 animation.start();
                 animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
